@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="lhp.mapper.CargoMapper" >
+  <select id="queryForType" parameterType="lhp.pojo.Cargo">
+    SELECT * FROM cargo WHERE type='%${type}%'
+  </select>
+  <select id="queryForName" parameterType="lhp.pojo.Cargo">
+    SELECT * FROM  cargo WHERE name='%${name}%'
+  </select>
+  <select id="queryAll" resultType="lhp.pojo.Cargo">
+    SELECT  * FROM  cargo
+  </select>
+  <insert id="insertCargo" parameterType="lhp.pojo.Cargo">
+    INSERT INTO cargo(name,num,type) VALUES (#{name},#{num},#{type})
+  </insert>
+  <update id="updateCargo" parameterType="lhp.pojo.Cargo">
+    UPDATE  cargo SET num=#{num},type=#{type}
+    WHERE name=#{name}
+  </update>
+  <delete id="deleteCargo" parameterType="lhp.pojo.Cargo">
+    DELETE FROM cargo WHERE name=#{name}
+  </delete>
+</mapper>
